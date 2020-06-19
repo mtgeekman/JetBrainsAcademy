@@ -71,7 +71,7 @@ public class CoffeeMachine {
                         case "1":
                             if (checkSupplies(espWater, espMilk, espBeans)) {
                                 water -= espWater;
-                                milk -= espMilk;
+                                milk  -= espMilk;
                                 beans -= espBeans;
                                 money += espMoney;
                                 cups -= 1;
@@ -80,7 +80,7 @@ public class CoffeeMachine {
                         case "2":
                             if (checkSupplies(latteWater, latteMilk, latteBeans)) {
                                 water -= latteWater;
-                                milk -= latteMilk;
+                                milk  -= latteMilk;
                                 beans -= latteBeans;
                                 money += latteMoney;
                                 cups -= 1;
@@ -89,7 +89,7 @@ public class CoffeeMachine {
                         case "3":
                             if (checkSupplies(capWater, capMilk, capBeans)) {
                                 water -= capWater;
-                                milk -= capMilk;
+                                milk  -= capMilk;
                                 beans -= capBeans;
                                 money += capMoney;
                                 cups -= 1;
