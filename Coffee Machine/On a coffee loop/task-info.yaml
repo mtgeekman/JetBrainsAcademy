@@ -271,6 +271,126 @@ files:
         }
     }
   learner_created: false
+- name: src/machine/CoffeeMachine.java
+  visible: true
+  text: |
+    package machine;
+
+    import java.util.*;
+
+    public class CoffeeMachine {
+        private static int water = 400;
+        private static int milk = 540;
+        private static int beans = 120;
+        private static int cups = 9;
+        private static int money = 550;
+
+        private static int espWater = 250;
+        private static int espMilk = 0;
+        private static int espBeans = 16;
+        private static int espMoney = 4;
+
+        private static int latteWater = 350;
+        private static int latteMilk = 75;
+        private static int latteBeans = 20;
+        private static int latteMoney = 7;
+
+        private static int capWater = 200;
+        private static int capMilk = 100;
+        private static int capBeans = 12;
+        private static int capMoney = 6;
+
+        public static void printInventory() {
+            System.out.println("\nThe coffee machine has:");
+            System.out.println(water + " of water");
+            System.out.println(milk + " of milk");
+            System.out.println(beans + " of coffee beans");
+            System.out.println(cups + " of disposable cups");
+            System.out.println(money + " of money\n");
+        }
+
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+
+            printInventory();
+
+            System.out.println("Write action (buy, fill, take):");
+            String action = scanner.nextLine();
+
+            switch(action) {
+                case "buy":
+                    System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino:");
+                    int type = scanner.nextInt();
+
+                    switch (type) {
+                        case 1:
+                            water -= espWater;
+                            milk  -= espMilk;
+                            beans -= espBeans;
+                            money += espMoney;
+                            break;
+                        case 2:
+                            water -= latteWater;
+                            milk  -= latteMilk;
+                            beans -= latteBeans;
+                            money += latteMoney;
+                            break;
+                        case 3:
+                            water -= capWater;
+                            milk  -= capMilk;
+                            beans -= capBeans;
+                            money += capMoney;
+                            break;
+                        default:
+                            System.out.println("We don't offer that here");
+                    }
+                    cups -= 1;
+                    break;
+                case "fill":
+                    System.out.println("Write how many ml of water do you want to add:");
+                    water += scanner.nextInt();
+                    System.out.println("Write how many ml of milk do you want to add:");
+                    milk += scanner.nextInt();
+                    System.out.println("Write how many grams of coffee beans do you want to add:");
+                    beans += scanner.nextInt();
+                    System.out.println("Write how many disposable cups of coffee do you want to add:");
+                    cups += scanner.nextInt();
+                    break;
+                case "take":
+                    System.out.println("I gave you " + money);
+                    money -= money;
+                    break;
+                default:
+                    System.out.println("unknown action: " + action);
+            }
+
+            printInventory();
+
+
+            /*
+            System.out.println("Write how many ml of water the coffee machine has:");
+            water = scanner.nextInt();
+            System.out.println("Write how many ml of milk the coffee machine has:");
+            milk = scanner.nextInt();
+            System.out.println("Write how many grams of coffee beans the coffee machine has:");
+            beans = scanner.nextInt();
+            System.out.println("Write how many cups of coffee you will need:");
+            cups = scanner.nextInt();
+
+            canMake = water/neededWater < milk/neededMilk ? (Math.min(water / neededWater, beans / neededBeans)) : (Math.min(milk / neededMilk, beans / neededBeans));
+
+            if (cups == canMake) {
+                System.out.println("Yes, I can make that amount of coffee");
+            } else if (cups > canMake) {
+                System.out.println("No, I can make only " + canMake + " cup(s) of coffee");
+            } else {
+                System.out.println("Yes, I can make that amount of coffee (and even " + (canMake - cups) + " more than that)");
+            }*/
+        }
+
+
+    }
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/33/stages/179/implement
-status: Unchecked
+status: Solved
 record: -1
