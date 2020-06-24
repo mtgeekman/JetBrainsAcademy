@@ -9,20 +9,28 @@ public class CoffeeMachine {
     private static int cups = 9;
     private static int money = 550;
 
-    private static int espWater = 250;
-    private static int espMilk = 0;
-    private static int espBeans = 16;
-    private static int espMoney = 4;
+    enum Menu {
+        espresso(250, 0, 16, 4),
+        latte(350, 75, 20, 7),
+        cappuccino(200, 100, 12, 6);
 
-    private static int latteWater = 350;
-    private static int latteMilk = 75;
-    private static int latteBeans = 20;
-    private static int latteMoney = 7;
+        int water;
+        int milk;
+        int beans;
+        int cost;
 
-    private static int capWater = 200;
-    private static int capMilk = 100;
-    private static int capBeans = 12;
-    private static int capMoney = 6;
+        Menu(int water, int milk, int beans, int cost){
+            this.water = water;
+            this.milk = milk;
+            this.beans = beans;
+            this.cost = cost;
+        }
+        int getWater() {return this.water;}
+        int getMilk() {return this.milk;}
+        int getBeans() {return this.beans;}
+        int getCost() {return this.cost;}
+    }
+
 
     public static void printInventory() {
         System.out.println(" \nThe coffee machine has:");
@@ -55,6 +63,8 @@ public class CoffeeMachine {
         System.out.println("I have enough resources, making you a coffee!");
         return true;
     }
+
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean looping = true;
@@ -69,29 +79,29 @@ public class CoffeeMachine {
 
                     switch (type) {
                         case "1":
-                            if (checkSupplies(espWater, espMilk, espBeans)) {
-                                water -= espWater;
-                                milk  -= espMilk;
-                                beans -= espBeans;
-                                money += espMoney;
+                            if (checkSupplies(Menu.espresso.getWater(), Menu.espresso.getMilk(), Menu.espresso.getBeans())) {
+                                water -= Menu.espresso.getWater();
+                                milk  -= Menu.espresso.getMilk();
+                                beans -= Menu.espresso.getBeans();
+                                money += Menu.espresso.getCost();
                                 cups -= 1;
                             }
                             break;
                         case "2":
-                            if (checkSupplies(latteWater, latteMilk, latteBeans)) {
-                                water -= latteWater;
-                                milk  -= latteMilk;
-                                beans -= latteBeans;
-                                money += latteMoney;
+                            if (checkSupplies(Menu.latte.getWater(), Menu.latte.getMilk(), Menu.latte.getBeans())) {
+                                water -= Menu.latte.getWater();
+                                milk  -= Menu.latte.getMilk();
+                                beans -= Menu.latte.getBeans();
+                                money += Menu.latte.getCost();
                                 cups -= 1;
                             }
                             break;
                         case "3":
-                            if (checkSupplies(capWater, capMilk, capBeans)) {
-                                water -= capWater;
-                                milk  -= capMilk;
-                                beans -= capBeans;
-                                money += capMoney;
+                            if (checkSupplies(Menu.cappuccino.getWater(), Menu.cappuccino.getMilk(), Menu.cappuccino.getBeans())) {
+                                water -= Menu.cappuccino.getWater();
+                                milk  -= Menu.cappuccino.getMilk();
+                                beans -= Menu.cappuccino.getBeans();
+                                money += Menu.cappuccino.getCost();
                                 cups -= 1;
                             }
                             break;
